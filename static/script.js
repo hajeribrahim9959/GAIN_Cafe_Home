@@ -1,0 +1,4 @@
+const langBtn=document.getElementById('lang');let language='en';
+langBtn.addEventListener('click',()=>{language=language==='en'?'ar':'en';document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';langBtn.textContent=language==='en'?'العربية':'English';document.querySelectorAll('[data-en][data-ar]').forEach(el=>{el.innerHTML=el.dataset[language]});});
+const nav=document.getElementById('nav');document.getElementById('toggle').addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
